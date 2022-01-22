@@ -171,6 +171,38 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(-2, gilded_rose.items[3].sell_in)
         self.assertEqual(0, gilded_rose.items[3].quality)
 
+    # Conjured Mana Cake
+    def test_conjured(self):
+        items = [Item(name="Conjured Mana Cake", sell_in=3, quality=5),
+                 Item(name="Conjured Mana Cake", sell_in=1, quality=32)
+                 ]
+
+        gilded_rose = GildedRose(items)
+
+        gilded_rose.update_quality()  # Day 1
+        self.assertEqual(2, gilded_rose.items[0].sell_in)
+        self.assertEqual(3, gilded_rose.items[0].quality)
+        self.assertEqual(0, gilded_rose.items[1].sell_in)
+        self.assertEqual(30, gilded_rose.items[1].quality)
+
+        gilded_rose.update_quality()  # Day 2
+        self.assertEqual(1, gilded_rose.items[0].sell_in)
+        self.assertEqual(1, gilded_rose.items[0].quality)
+        self.assertEqual(-1, gilded_rose.items[1].sell_in)
+        self.assertEqual(26, gilded_rose.items[1].quality)
+
+        gilded_rose.update_quality()  # Day 3
+        self.assertEqual(0, gilded_rose.items[0].sell_in)
+        self.assertEqual(0, gilded_rose.items[0].quality)
+        self.assertEqual(-2, gilded_rose.items[1].sell_in)
+        self.assertEqual(22, gilded_rose.items[1].quality)
+
+        gilded_rose.update_quality()  # Day 4
+        self.assertEqual(-1, gilded_rose.items[0].sell_in)
+        self.assertEqual(0, gilded_rose.items[0].quality)
+        self.assertEqual(-3, gilded_rose.items[1].sell_in)
+        self.assertEqual(18, gilded_rose.items[1].quality)
+
 
 if __name__ == '__main__':
     unittest.main()
