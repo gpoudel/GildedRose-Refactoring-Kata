@@ -101,6 +101,61 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(-1, gilded_rose.items[1].sell_in)
         self.assertEqual(80, gilded_rose.items[1].quality)
 
+    # Backstage passes
+    def test_backstage_passes(self):
+        items = [
+            Item(name="Backstage passes to a TAFKAL80ETC concert",
+                 sell_in=15, quality=20),
+            Item(name="Backstage passes to a TAFKAL80ETC concert",
+                 sell_in=10, quality=49),
+            Item(name="Backstage passes to a TAFKAL80ETC concert",
+                 sell_in=6, quality=42),
+            Item(name="Backstage passes to a TAFKAL80ETC concert",
+                 sell_in=2, quality=32),
+        ]
+
+        gilded_rose = GildedRose(items)
+
+        gilded_rose.update_quality()  # Day 1
+        self.assertEqual(14, gilded_rose.items[0].sell_in)
+        self.assertEqual(21, gilded_rose.items[0].quality)
+        self.assertEqual(9, gilded_rose.items[1].sell_in)
+        self.assertEqual(50, gilded_rose.items[1].quality)
+        self.assertEqual(5, gilded_rose.items[2].sell_in)
+        self.assertEqual(44, gilded_rose.items[2].quality)
+        self.assertEqual(1, gilded_rose.items[3].sell_in)
+        self.assertEqual(35, gilded_rose.items[3].quality)
+
+        gilded_rose.update_quality()  # Day 2
+        self.assertEqual(13, gilded_rose.items[0].sell_in)
+        self.assertEqual(22, gilded_rose.items[0].quality)
+        self.assertEqual(8, gilded_rose.items[1].sell_in)
+        self.assertEqual(50, gilded_rose.items[1].quality)
+        self.assertEqual(4, gilded_rose.items[2].sell_in)
+        self.assertEqual(47, gilded_rose.items[2].quality)
+        self.assertEqual(0, gilded_rose.items[3].sell_in)
+        self.assertEqual(38, gilded_rose.items[3].quality)
+
+        gilded_rose.update_quality()  # Day 3
+        self.assertEqual(12, gilded_rose.items[0].sell_in)
+        self.assertEqual(23, gilded_rose.items[0].quality)
+        self.assertEqual(7, gilded_rose.items[1].sell_in)
+        self.assertEqual(50, gilded_rose.items[1].quality)
+        self.assertEqual(3, gilded_rose.items[2].sell_in)
+        self.assertEqual(50, gilded_rose.items[2].quality)
+        self.assertEqual(-1, gilded_rose.items[3].sell_in)
+        self.assertEqual(0, gilded_rose.items[3].quality)
+
+        gilded_rose.update_quality()  # Day 4
+        self.assertEqual(11, gilded_rose.items[0].sell_in)
+        self.assertEqual(24, gilded_rose.items[0].quality)
+        self.assertEqual(6, gilded_rose.items[1].sell_in)
+        self.assertEqual(50, gilded_rose.items[1].quality)
+        self.assertEqual(2, gilded_rose.items[2].sell_in)
+        self.assertEqual(50, gilded_rose.items[2].quality)
+        self.assertEqual(-2, gilded_rose.items[3].sell_in)
+        self.assertEqual(0, gilded_rose.items[3].quality)
+
 
 if __name__ == '__main__':
     unittest.main()
