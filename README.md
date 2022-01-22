@@ -30,4 +30,10 @@ Note1* : - "Backstage passes", increases in Quality as its SellIn value approach
 Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
 	Quality drops to 0 after the concert.
  
- 
+ ### Approach:
+1. Decompose the problem logically and document it
+2. Run the provided source code
+3. Write a number of test cases for unit testing all the aspects of provided source code
+4. Refactor the code while making sure all the test cases written in previous step pass througout all the stages of refactoring
+5. Add unit tests for logic to be added ('Conjured Items')
+6. Write the logic for Conjured items
