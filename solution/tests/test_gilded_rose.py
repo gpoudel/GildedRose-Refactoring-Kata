@@ -12,7 +12,6 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual("foo", items[0].name)
 
     # default items
-
     def test_default(self):
         items = [
             Item(name="+5 Dexterity Vest", sell_in=10, quality=20),
@@ -80,6 +79,27 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(50, gilded_rose.items[1].quality)
         self.assertEqual(-6, gilded_rose.items[2].sell_in)
         self.assertEqual(50, gilded_rose.items[2].quality)
+
+    # Legendary item - Sulfuras
+    def test_sulfuras(self):
+        items = [
+            Item(name="Sulfuras, Hand of Ragnaros", sell_in=0, quality=80),
+            Item(name="Sulfuras, Hand of Ragnaros", sell_in=-1, quality=80)
+        ]
+
+        gilded_rose = GildedRose(items)
+
+        gilded_rose.update_quality()  # Day 1
+        self.assertEqual(0, gilded_rose.items[0].sell_in)
+        self.assertEqual(80, gilded_rose.items[0].quality)
+        self.assertEqual(-1, gilded_rose.items[1].sell_in)
+        self.assertEqual(80, gilded_rose.items[1].quality)
+
+        gilded_rose.update_quality()  # Day 2
+        self.assertEqual(0, gilded_rose.items[0].sell_in)
+        self.assertEqual(80, gilded_rose.items[0].quality)
+        self.assertEqual(-1, gilded_rose.items[1].sell_in)
+        self.assertEqual(80, gilded_rose.items[1].quality)
 
 
 if __name__ == '__main__':
