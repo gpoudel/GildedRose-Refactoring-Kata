@@ -75,4 +75,16 @@ class GildedRose(object):
 
     # update 'Conjured' - new item to be added
     def update_conjured(self, item):
-        self
+
+        # decrease quality
+        if item.quality > self.min_quality:
+            item.quality = item.quality - 2
+            # if sell in days have passed, decrease quality twice
+            if item.sell_in <= 0:
+                item.quality = item.quality - 2
+
+        if item.quality < self.min_quality:
+            item.quality = self.min_quality
+
+        # decrease sell_in days
+        item.sell_in = item.sell_in - 1
