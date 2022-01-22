@@ -57,3 +57,9 @@ To run the unit tests:
   python -m unittest tests/test_gilded_rose.py -v
 
 ```
+
+### Continious Integration Workflow:
+
+The CI workflow that builds the code for **python versions 3.6, 3.7 & 3.8** under **ubuntu-latest** and runs the unit tests automatically on push to the main branch is provided.
+
+![CI workflow](https://raw.githubusercontent.com/gpoudel/GildedRose-Refactoring-Kata/main/docs/CI.PNG)
