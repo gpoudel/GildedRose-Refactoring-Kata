@@ -15,7 +15,9 @@ class GildedRoseTest(unittest.TestCase):
     def test_default(self):
         items = [
             Item(name="+5 Dexterity Vest", sell_in=10, quality=20),
-            Item(name="Elixir of the Mongoose", sell_in=5, quality=7)
+            Item(name="Elixir of the Mongoose", sell_in=5, quality=7),
+            Item(name="Empire of Jigglypuff", sell_in=1, quality=3),
+            Item(name="Charmander 007", sell_in=1, quality=48)
         ]
 
         gilded_rose = GildedRose(items)
@@ -25,18 +27,30 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(19, gilded_rose.items[0].quality)
         self.assertEqual(4, gilded_rose.items[1].sell_in)
         self.assertEqual(6, gilded_rose.items[1].quality)
+        self.assertEqual(0, gilded_rose.items[2].sell_in)
+        self.assertEqual(2, gilded_rose.items[2].quality)
+        self.assertEqual(0, gilded_rose.items[3].sell_in)
+        self.assertEqual(47, gilded_rose.items[3].quality)
 
         gilded_rose.update_quality()  # Day 2
         self.assertEqual(8, gilded_rose.items[0].sell_in)
         self.assertEqual(18, gilded_rose.items[0].quality)
         self.assertEqual(3, gilded_rose.items[1].sell_in)
         self.assertEqual(5, gilded_rose.items[1].quality)
+        self.assertEqual(-1, gilded_rose.items[2].sell_in)
+        self.assertEqual(0, gilded_rose.items[2].quality)
+        self.assertEqual(-1, gilded_rose.items[3].sell_in)
+        self.assertEqual(45, gilded_rose.items[3].quality)
 
         gilded_rose.update_quality()  # Day 3
         self.assertEqual(7, gilded_rose.items[0].sell_in)
         self.assertEqual(17, gilded_rose.items[0].quality)
         self.assertEqual(2, gilded_rose.items[1].sell_in)
         self.assertEqual(4, gilded_rose.items[1].quality)
+        self.assertEqual(-2, gilded_rose.items[2].sell_in)
+        self.assertEqual(0, gilded_rose.items[2].quality)
+        self.assertEqual(-2, gilded_rose.items[3].sell_in)
+        self.assertEqual(43, gilded_rose.items[3].quality)
 
     # Aged Brie
     def test_aged_brie(self):
