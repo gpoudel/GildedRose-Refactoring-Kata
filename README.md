@@ -9,7 +9,9 @@ This is my attempt to solve the [Gilded Rose refactoring kata by Emily Bache](ht
 ```
 - A SellIn value (denotes the number of days till the item needs to be sold)
 - A Quality value (denotes the value of the item)
-- At the end of each day the system lowers the SellIn value and changes the Qality by a certain delta (positive or negative, this depends on type of item)
+- At the end of each day the system:
+    1. lowers the SellIn value and 
+    2. changes the Qality by a certain delta (positive or negative, this depends on type of item)
 ```
 
 2. At the moment the business sells the following types of items:
@@ -23,7 +25,7 @@ This is my attempt to solve the [Gilded Rose refactoring kata by Emily Bache](ht
 
 3. The business is going to introduce a new category of items called "Conjured" which has its own special characteristics and hence won't fall under the regular items (**the program needs to be updated for this change**).
 
-#### The daily change (Delta) in Quality specific to items can be tabulated as:
+#### The daily change (Delta) in Quality of each item, along with their min and max possible values can be tabulated as:
 
 | Item             | Delta                                  | Minimum | Maximum |
 | ---------------- | -------------------------------------- | ------- | ------- |
@@ -34,8 +36,11 @@ This is my attempt to solve the [Gilded Rose refactoring kata by Emily Bache](ht
 | Conjured         | -2                                     | 0       | 50      |
 
 ```
-Note1\* : - "Backstage passes", increases in Quality as its SellIn value approaches (+1);
-Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but Quality drops to 0 after the concert.
+Note1* : Quality of "Backstage passes" 
+- increases by +1 as its SellIn value approaches
+- increases by +2 when SellIn value is 10 days or less
+- increases by +3 when SellIn value is 5 days or less 
+- drops to 0 after the concert
 ```
 
 ### Approach:
